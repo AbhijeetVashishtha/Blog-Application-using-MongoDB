@@ -5,6 +5,7 @@ const router = require('./route/user-routes');
 require('dotenv').config()
 const app = express();
 
+app.use(express.json());
 app.use("/api/user", router);
 
 app.use('/', (req,res,next) => {
