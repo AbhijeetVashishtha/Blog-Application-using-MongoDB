@@ -32,3 +32,24 @@ exports.postBlog = async (req,res) => {
         return res.status(500).json({message: "Something went Wrong"});
     }
 }
+
+exports.updateBlog = async(req,res) => {
+    try{
+        const {title, description} = req.body;
+        const blogId = req.params.id;
+        const blog = await Blog.findByIdAndUpdate(blogId, {
+            title,
+            description
+        });
+        if(!blog)
+        {
+            return res.status(400).json({message: "Blog Not found and Unable to update"})
+        }
+        return res.status(200).json({blog});
+    }
+    catch(err) 
+    {
+        console.log(err);
+        return res.status(500).json({message: "Something went wrong"});
+    }
+}
