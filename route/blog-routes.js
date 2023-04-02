@@ -12,4 +12,6 @@ router.put("/updateBlog/:id", blogController.updateBlog);
 
 router.get("/:id", blogController.getBlogById);
 
+router.delete("/:id", blogController.deleteBlogById);
+
 module.exports = router;

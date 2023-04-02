@@ -70,3 +70,20 @@ exports.getBlogById = async(req,res) => {
         return res.status(500).json({message: "Something went wrong"});
     }
 }
+
+exports.deleteBlogById = async (req,res) => {
+    try{
+        const BlogId  = req.params.id;
+        let blog = await Blog.findByIdAndRemove(BlogId);
+        if(!blog)
+        {
+            return res.status(404).json({message: "No Blog Found with this ID"});
+        }
+        return res.status(200).json({message: "Blog Successfully Deleted"});
+    }
+    catch(err)
+    {
+        console.log(err);
+        return res.status(500).json({message: "Something went wrong"});
+    }
+}
