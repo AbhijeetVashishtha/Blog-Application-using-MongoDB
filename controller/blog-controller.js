@@ -53,3 +53,20 @@ exports.updateBlog = async(req,res) => {
         return res.status(500).json({message: "Something went wrong"});
     }
 }
+
+exports.getBlogById = async(req,res) => {
+    try{
+        const blogId = req.params.id;
+        let blog = await Blog.findById(blogId);
+        if(!blog)
+        {
+            return res.status(404).json({message: "Blog Not found"});
+        }
+        return res.status(200).json({blog});
+    }
+    catch(err)
+    {
+        console.log(err);
+        return res.status(500).json({message: "Something went wrong"});
+    }
+}

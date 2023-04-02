@@ -10,4 +10,6 @@ router.post("/addBlog", blogController.postBlog);
 
 router.put("/updateBlog/:id", blogController.updateBlog);
 
+router.get("/:id", blogController.getBlogById);
+
 module.exports = router;
