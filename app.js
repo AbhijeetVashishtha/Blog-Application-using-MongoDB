@@ -1,12 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const router = require('./route/user-routes');
+const userRoute = require('./route/user-routes');
 
 require('dotenv').config()
 const app = express();
 
 app.use(express.json());
-app.use("/api/user", router);
+app.use("/api/user", userRoute);
 
 app.use('/', (req,res,next) => {
     res.send('Hello World!!');
