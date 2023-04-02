@@ -28,7 +28,8 @@ exports.signUp = async (req,res) => {
         const user = new User({
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            blogs: []
         })
         await user.save();
         return res.status(201).json({message: "User successfully Created", user});
